@@ -39,6 +39,8 @@ gem 'kaminari'
 
 gem 'bootstrap', '~> 4.4.1'
 
+gem 'jquery-rails'
+
 gem 'devise'
 
 gem 'omniauth'
