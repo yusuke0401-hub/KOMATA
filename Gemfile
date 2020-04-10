@@ -39,6 +39,18 @@ gem 'kaminari'
 
 gem 'bootstrap', '~> 4.4.1'
 
+gem 'devise'
+
+gem 'omniauth'
+
+gem 'omniauth-google-oauth2'
+
+gem 'dotenv-rails'
+
+gem 'devise-i18n'
+
+gem 'devise-i18n-views'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
