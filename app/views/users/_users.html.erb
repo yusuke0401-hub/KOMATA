@@ -1,0 +1,22 @@
+<% if users %>
+<ul class="media-list">
+  <% users.each do |user| %>
+  <li class="media">
+    <div class="media-body">
+      <p><%= user.email %></p>
+      <p><%= link_to 'View profile', user_path(user) %></p>
+    </div>  
+    
+    <div class="col-sm-4 pb-3">
+      <div class="card">
+        <img class="img-fluid rounded-circle card-avatar-img" src="<%= user.avatar %>">
+        <span class="card-avatar-back"></span>
+      <div>
+        </div>
+  </li>
+  <% end %>
+</ul>
+
+<%= paginate users %>
+
+<% end %>
