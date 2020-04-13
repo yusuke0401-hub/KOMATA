@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<h1>ご登録ありがとうございます<%= @user.email %></h1>
+<%= link_to '本登録を完了する',
+            controller: 'devise/confirmations',
+            action: 'create',
+            confirmation_token: @token %>

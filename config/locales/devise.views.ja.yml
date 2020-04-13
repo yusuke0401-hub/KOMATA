@@ -5,6 +5,7 @@ ja:
         name: "名前"
         profile: "プロフィール"
         avatar: "アバター画像"
+        login: "名前もしくはメールアドレス"
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
