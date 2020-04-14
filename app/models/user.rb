@@ -6,8 +6,32 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: :false }, length: {maximum: 30 }   
   validates :profile, length: { maximum: 300}
   
-  attr_accessor :login
   mount_uploader :avatar, AvatarUploader
+  
+  
+  #フォロー機能　アソシエーション
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
+  
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
+  
+  #メールもしくはパスワードでログイン
+  attr_accessor :login
   
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -17,6 +41,7 @@ class User < ApplicationRecord
       where(conditions).first
     end
   end
+  
   
  protected         
  

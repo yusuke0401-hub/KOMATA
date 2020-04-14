@@ -5,6 +5,9 @@
     <div class="media-body">
       <p><%= user.name %></p>
       <p><%= user.email %></p>
+      
+      <%= render 'relationships/follow_button', user: user %>
+
       <p><%= link_to 'View profile', user_path(user) %></p>
     </div>  
     

@@ -8,6 +8,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#">about</a></li>
+        <li class="nav-item"><%= link_to "ユーザー詳細", user_path(current_user), class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "ユーザー編集", edit_user_registration_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "ユーザー一覧", users_path, class: "nav-link" %></li>
       </ul>
@@ -31,12 +32,7 @@
           </div>
           <% end %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Something else here</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Something else here</a>
-        </li>
+   
       </ul>
     </div>
   </nav>
