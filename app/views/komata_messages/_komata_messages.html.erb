@@ -1,0 +1,29 @@
+<ul class="media-list">
+<% komata_messages.each do |komata_message| %>
+    <li class="media">
+      <div class="media-left">
+        <% if komata_message.image? %>
+          <%= image_tag komata_message.image.url(:thumb), class: "media-object img-rounded" %>
+        <% end %>
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to komata_message.user.name, user_path(komata_message.user) %>
+          <span class="text-muted">posted at <%= komata_message.created_at %></span>
+        </div>
+        <div>
+          <p><%= komata_message.content %></p>
+        </div>
+        <div>
+          <% if current_user == komata_message.user %>
+          <%= link_to "Delete", komata_message, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+<% end %>
+
+  
+<%= paginate komata_messages %>
+
+</ul>

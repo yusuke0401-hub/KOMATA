@@ -8,8 +8,10 @@ class User < ApplicationRecord
   
   mount_uploader :avatar, AvatarUploader
   
+  #komata_message投稿機能
+  has_many :komata_messages
   
-  #フォロー機能　アソシエーション
+  #フォロー機能　
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'

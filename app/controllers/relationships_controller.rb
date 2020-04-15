@@ -5,10 +5,10 @@ class RelationshipsController < ApplicationController
     following = current_user.follow(@user)
     
     if following.save 
-      flash[:success] = "ユーザーをフォローしました"
+      flash[:success] = "ユーザーをフォローしました。"
        redirect_back(fallback_location: root_path)
     else
-      flash[:danger] = "ユーザーのフォローに失敗しました"
+      flash[:danger] = "ユーザーのフォローに失敗しました。"
       redirect_back(fallback_location: root_path)
     end
   end

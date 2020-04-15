@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   end
   
   resources :relationships, only: [:create, :destroy]
-
+  resources :komata_messages, only: [:index, :new, :create, :destroy]
+  
 end
