@@ -1,0 +1,14 @@
+<h2>OTASUKE一覧</h2>
+<% otasuke_messages.each do |otasuke_message| %>
+  <div>
+    <% unless otasuke_message.user.blank? %>
+      <p><%= otasuke_message.user.name %></p>
+    <% end %>   
+    <p><%= otasuke_message.content %></p>
+    <hr>
+  </div>
+
+<% end %>
+
+<%= paginate otasuke_messages %>
+

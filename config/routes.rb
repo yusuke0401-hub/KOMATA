@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
   
   resources :relationships, only: [:create, :destroy]
-  resources :komata_messages, only: [:index, :new, :create, :destroy]
-  
+  resources :komata_messages, only: [:index, :show ,:new, :create, :destroy] do 
+    resources :otasuke_messages, only: [:create, :destroy]
+  end
+
 end

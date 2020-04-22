@@ -1,0 +1,28 @@
+<ul class="media-list">
+    <li class="media">
+      <div class="media-left">
+        <% if @komata_message.image? %>
+          <%= image_tag @komata_message.image.url, class: "media-object img-rounded" %>
+        <% end %>
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to @komata_message.user.name, user_path(@komata_message.user) %>
+          <span class="text-muted">posted at <%= @komata_message.created_at %></span>
+        </div>
+        <div>
+          <p><%= @komata_message.content %></p>
+        </div>
+        <div>
+          <% if current_user == @komata_message.user %>
+          <%= link_to "Delete", @komata_message, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+    
+  <% unless @otasuke_messages.blank? %>  
+    <%= render 'otasuke_messages/otasuke_messages', komata_message: @komata_message, otasuke_messages: @otasuke_messages, otasuke_message: @otasuke_message %>
+  <% end %>
+  <%= render 'otasuke_messages/form_otasuke_message', komata_message: @komata_message, otasuke_message: @otasuke_message %>
+</ul>

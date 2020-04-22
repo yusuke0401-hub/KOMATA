@@ -9,7 +9,10 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   
   #komata_message投稿機能
-  has_many :komata_messages
+  has_many :komata_messages, dependent: :destroy
+  
+  #otasuke_message投稿機能
+  has_many :otasuke_messages 
   
   #フォロー機能　
   has_many :relationships

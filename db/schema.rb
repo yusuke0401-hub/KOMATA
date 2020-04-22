@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200415050734) do
+ActiveRecord::Schema.define(version: 20200416064200) do
 
   create_table "komata_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20200415050734) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_komata_messages_on_user_id", using: :btree
+  end
+
+  create_table "otasuke_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "komata_message_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["komata_message_id"], name: "index_otasuke_messages_on_komata_message_id", using: :btree
+    t.index ["user_id"], name: "index_otasuke_messages_on_user_id", using: :btree
   end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -59,6 +69,8 @@ ActiveRecord::Schema.define(version: 20200415050734) do
   end
 
   add_foreign_key "komata_messages", "users"
+  add_foreign_key "otasuke_messages", "komata_messages"
+  add_foreign_key "otasuke_messages", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
 end

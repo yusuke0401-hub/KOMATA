@@ -5,6 +5,12 @@ class KomataMessagesController < ApplicationController
     @komata_messages = KomataMessage.all.order('created_at DESC').page(params[:page])
   end
   
+  def show
+    @komata_message = KomataMessage.find(params[:id])
+    @otasuke_messages = @komata_message.otasuke_messages.order('created_at DESC').page(params[:page])
+    @otasuke_message = @komata_message.otasuke_messages.build
+  end
+  
   def new
     @komata_message = KomataMessage.new
   end 
@@ -13,12 +19,12 @@ class KomataMessagesController < ApplicationController
     @komata_message = current_user.komata_messages.build(komata_message_params)
     
     if @komata_message.save
-      flash[:success] = "メッセージを投稿しました。"
+      flash[:success] = "komataメッセージを投稿しました。"
       redirect_to komata_messages_path
     else
       @komata_messages = current_user.komata_messages.order('created_at DESC').page(params[:page])
-      flash[:danger] = "メッセージの投稿に失敗しました。"
-      render "home/index"
+      flash[:danger] = "komataメッセージの投稿に失敗しました。"
+      redirect_back(fallback_location: root_path)
     end
   end
   
