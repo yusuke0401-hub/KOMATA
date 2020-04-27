@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     member do 
       get :followings
       get :followers
+      
+      get :liked_otasuke_messages
     end
   end
   
@@ -16,5 +18,6 @@ Rails.application.routes.draw do
   resources :komata_messages, only: [:index, :show ,:new, :create, :destroy] do 
     resources :otasuke_messages, only: [:create, :destroy]
   end
+  resources :likes, only: [:create, :destroy] 
 
 end

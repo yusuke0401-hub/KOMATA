@@ -4,4 +4,7 @@ class OtasukeMessage < ApplicationRecord
   
   validates :content, presence: true
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_otasuke_message_users, through: :likes, source: :user
+
 end

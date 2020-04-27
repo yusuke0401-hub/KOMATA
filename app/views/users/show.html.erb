@@ -28,6 +28,10 @@
         <%= link_to "フォロワー", followers_user_path(@user) %>
         <%= @count_followers %>
       </li>
+      <li>
+        <%= link_to "お気に入り", liked_otasuke_messages_user_path(@user) %>
+        <%= @count_liked_otasuke_messages %>
+      </li>
     </ul>
   </div>
 </div>

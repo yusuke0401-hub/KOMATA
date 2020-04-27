@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user! 
-  before_action :set_user, only: [:show, :followings, :followers]
+  before_action :set_user, 
+  only: [:show, :followings, :followers, :liked_otasuke_messages]
   
   def index
     @users = User.all.page(params[:page]).per(9)
@@ -17,6 +18,11 @@ class UsersController < ApplicationController
   def followers
     @followers = @user.followers.page(params[:page])
   end
+  
+  def liked_otasuke_messages
+    @liked_otasuke_messages = @user.liked_otasuke_messages.page(params[:page])
+  end
+  
   
   private
   

@@ -1,0 +1,11 @@
+<% if current_user.liked?(otasuke_message) %>
+  <%= form_for(current_user.likes.find_by(otasuke_message_id: otasuke_message.id), html: { method: :delete }) do |f| %>
+    <%= hidden_field_tag :otasuke_message_id, otasuke_message.id %>
+    <%= f.submit 'お気に入り解除', class: 'btn btn-danger btn-xs' %>
+  <% end %>
+<% else %>
+  <%= form_for(current_user.likes.build) do |f| %>
+    <%= hidden_field_tag :otasuke_message_id, otasuke_message.id %>
+    <%= f.submit 'お気に入り', class: 'btn btn-primary btn-xs' %>
+  <% end %>
+<% end %>

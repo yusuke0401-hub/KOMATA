@@ -18,7 +18,7 @@
           <%= link_to "komata詳細", komata_message_path(komata_message), class: 'btn btn-danger btn-xs' %>
 
           <% if current_user == komata_message.user %>
-          <%= link_to "削除", komata_message, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+          <%= link_to "削除", komata_message, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
       </div>

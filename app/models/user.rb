@@ -12,7 +12,11 @@ class User < ApplicationRecord
   has_many :komata_messages, dependent: :destroy
   
   #otasuke_message投稿機能
-  has_many :otasuke_messages 
+  has_many :otasuke_messages, dependent: :destroy
+  
+  #otasuke_messageお気に入り機能
+  has_many :likes
+  has_many :liked_otasuke_messages, through: :likes, source: :otasuke_message
   
   #フォロー機能　
   has_many :relationships
@@ -20,6 +24,7 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
   
+  #フォローメソッド
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -33,6 +38,20 @@ class User < ApplicationRecord
 
   def following?(other_user)
     self.followings.include?(other_user)
+  end
+  
+  #お気に入りメソッド
+  def like(otasuke_message)
+    self.likes.find_or_create_by(otasuke_message_id: otasuke_message.id)
+  end
+  
+  def unlike(otasuke_message)
+    like = self.likes.find_by(otasuke_message_id: otasuke_message.id)
+    like.destroy if like
+  end
+  
+  def liked?(otasuke_message)
+    self.liked_otasuke_messages.include?(otasuke_message) 
   end
   
   #メールもしくはパスワードでログイン

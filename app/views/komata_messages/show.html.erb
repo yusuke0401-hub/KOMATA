@@ -13,15 +13,11 @@
         <div>
           <p><%= @komata_message.content %></p>
         </div>
-        <div>
-          <% if current_user == @komata_message.user %>
-          <%= link_to "Delete", @komata_message, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
-          <% end %>
-        </div>
       </div>
     </li>
     
-  <% unless @otasuke_messages.blank? %>  
+  <% unless @otasuke_messages.blank? %> 
+  <h2>OTASUKE一覧</h2>
     <%= render 'otasuke_messages/otasuke_messages', komata_message: @komata_message, otasuke_messages: @otasuke_messages, otasuke_message: @otasuke_message %>
   <% end %>
   <%= render 'otasuke_messages/form_otasuke_message', komata_message: @komata_message, otasuke_message: @otasuke_message %>

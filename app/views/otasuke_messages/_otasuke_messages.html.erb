@@ -1,10 +1,12 @@
-<h2>OTASUKE一覧</h2>
 <% otasuke_messages.each do |otasuke_message| %>
   <div>
     <% unless otasuke_message.user.blank? %>
+      <%= link_to user_path(otasuke_message.user) do %>
       <p><%= otasuke_message.user.name %></p>
+      <% end %>
     <% end %>   
     <p><%= otasuke_message.content %></p>
+    <p><%= render 'likes/like_button', otasuke_message: otasuke_message %></p>
     <hr>
   </div>
 
