@@ -1,10 +1,38 @@
 <div class="center jumbotron">
   <div class="text-center">
     <h1>Welcome to the KOMATA</h1>
+    <% if user_signed_in? %>
+      <%= current_user.name %>
+      <p><%= link_to 'KOMATA投稿', new_komata_message_path %></p>
+    <% end %>
   </div>
 </div>
 
-<% if user_signed_in? %>
-  <%= current_user.email %>
+<% unless @otasuke_message_ranking_users.nil? %>
+<ul class="media-list">
+<h1>ランキング</h1>
+<p>(OTASUKEメッセージの投稿数で集計しています。)</p>
+  <% @otasuke_message_ranking_users.each_with_index do |user,index| %>
+  <li class="media">
+    <div class="media-body">
+      <p><%= index+1 %>位</p>
+      <p><%= user.name %></p>
+      <p>KOMATA投稿数 <%= user.komata_messages.count %></p>
+      <p>OTASUKE投稿数 <%= user.otasuke_messages.count %></p>
+      
+      <%= render 'relationships/follow_button', user: user %>
+
+      <p><%= link_to 'View profile', user_path(user) %></p>
+    </div>  
+    
+    <div class="col-sm-4 pb-3">
+      <div class="card">
+        <img class="img-fluid rounded-circle card-avatar-img" src="<%= user.avatar %>">
+        <span class="card-avatar-back"></span>
+      <div>
+    </div>
+  </li>
+  <% end %>
+</ul>
 <% end %>
 
