@@ -1,13 +1,15 @@
 <div class="center jumbotron">
   <div class="text-center">
-    <h1>Welcome to the KOMATA</h1>
+    <h1>KOMATAへようこそ!</h1>
+    <p><%= link_to 'KOMATAとは？', explanation_index_path %></p>
     <% if user_signed_in? %>
       <%= current_user.name %>
-      <p><%= link_to 'KOMATA投稿', new_komata_message_path %></p>
+      <p><%= link_to 'KOMATA投稿', new_komata_message_path, class: "btn btn-lg btn-secondary" %></p>
     <% end %>
   </div>
 </div>
 
+<% if user_signed_in? %>
 <% unless @otasuke_message_ranking_users.nil? %>
 <ul class="media-list">
 <h1>ランキング</h1>
@@ -35,4 +37,4 @@
   <% end %>
 </ul>
 <% end %>
-
+<% end %>

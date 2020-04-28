@@ -1,0 +1,7 @@
+<h1 class="cover-heading">KOMATAとは</h1>
+<p>KOMATA（不安や悩み、困ったこと）を打ち明けたいけど打ち明けることがなかなか出来ない人が気軽に呟くことができるアプリです。
+KOMATAに対してOTASUKE（アドバイス、応援）を投稿することで助け合うことができます。</p>
+<p>さあ、KOMATAをOTASUKEしましょう！</p>
+<% if user_signed_in? %>
+  <%= link_to 'KOMATA投稿', new_komata_message_path, class: "btn btn-lg btn-secondary" %>
+<% end %>

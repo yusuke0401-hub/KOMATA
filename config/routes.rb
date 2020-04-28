@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'home#index' 
+  
   devise_for :users, controllers: { 
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :explanation, only: [:index]
   resources :relationships, only: [:create, :destroy]
   resources :komata_messages, only: [:index, :show ,:new, :create, :destroy] do 
     resources :otasuke_messages, only: [:create, :destroy]
