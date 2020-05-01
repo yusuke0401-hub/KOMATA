@@ -1,6 +1,6 @@
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-signin" }) do |f| %>
   <%= devise_error_messages %>  
-<h2 class="my-3 font-weight-normal">パスワードを変更</h2>
+  <h2 class="my-3 font-weight-normal">パスワードを変更</h2>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
@@ -8,12 +8,12 @@
     <% if @minimum_password_length %>
       <em class="sr-only">(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, class: "form-control", placeholder: "パスワード" autofocus: true, autocomplete: "new-password" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "パスワード", autofocus: true, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認用パスワード" autocomplete: "new-password" %>
+  <div class="field mb-3">
+    <%= f.label :password_confirmation, "Confirm new password", class: "sr-only" %><br />
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認用パスワード", autocomplete: "new-password" %>
   </div>
 
   <div class="actions">

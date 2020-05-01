@@ -10,6 +10,9 @@
     <p><%= link_to 'KOMATAとは？', explanation_index_path %></p>
     <% if user_signed_in? %>
       <p><%= link_to 'KOMATA投稿', new_komata_message_path, class: "btn btn-lg btn-secondary" %></p>
+      <% else %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-primary" %>
     <% end %>
   </div>
 </div>
