@@ -1,15 +1,14 @@
-<%= form_for(komata_message) do |f| %>
-
+<div class="post">
+  <h2 class="my-3 font-weight-normal text-center">KOMATA投稿</h2>
+  <%= form_for(komata_message) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
       <%=f.label :image,"投稿画像" %>
       <%= f.file_field :image %>    
     </div>
-
     <div class="form-group">
-      <%= f.text_area :content, class: 'form-control', rows: 5 %>
+      <%= f.text_area :content, class: 'form-control', placeholder: "500文字以内", rows: 5 %>
     </div>
-    
-    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-
-      
-<% end %>
+    <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>

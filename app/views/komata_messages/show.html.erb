@@ -1,24 +1,26 @@
-<ul class="media-list">
-    <li class="media">
-      <div class="media-left">
-        <% if @komata_message.image? %>
-          <%= image_tag @komata_message.image.url, class: "media-object img-rounded" %>
-        <% end %>
-      </div>
-      <div class="media-body">
-        <div>
-          <%= link_to @komata_message.user.name, user_path(@komata_message.user) %>
-          <span class="text-muted">posted at <%= @komata_message.created_at %></span>
-        </div>
-        <div>
-          <p><%= @komata_message.content %></p>
-        </div>
-      </div>
-    </li>
-    
+<div class="komata-show text-center">
+  <h2 class="my-3 font-weight-normal"><%= @komata_message.user.name %>さんのKOMATA</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">名前</th>
+        <th scope="col">投稿日時</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= link_to @komata_message.user.name, user_path(@komata_message.user) %></td>
+          <td><%= @komata_message.created_at.to_s(:datetime_jp) %></td>
+        </tr>
+        <tr>
+          <td class="text-left" colspan="3"><%= @komata_message.content %></td>
+        </tr>
+      </tbody> 
+    </table>
+  </div>
+  <%= render 'otasuke_messages/form_otasuke_message', komata_message: @komata_message, otasuke_message: @otasuke_message %>
   <% unless @otasuke_messages.blank? %> 
-  <h2>OTASUKE一覧</h2>
     <%= render 'otasuke_messages/otasuke_messages', komata_message: @komata_message, otasuke_messages: @otasuke_messages, otasuke_message: @otasuke_message %>
   <% end %>
-  <%= render 'otasuke_messages/form_otasuke_message', komata_message: @komata_message, otasuke_message: @otasuke_message %>
-</ul>
+</div>

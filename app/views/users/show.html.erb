@@ -1,37 +1,58 @@
 <div class="card col-sm-10 mx-auto mt-5 px-0">
   <div class="card-header bg-white">
-    <h2>アカウント情報</h2>
+    <h2 class="my-3 font-weight-normal text-center">アカウント情報</h2>
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-sm-8">
-        <!-- 略 -->
-      </div>
       <div class="col-sm-4">
-        <div class="d-flex flex-column">
-          <%= image_tag @user.avatar, class: "float-center border mb-2 mx-auto" %>
+        <div class="card-title text-center">
+          <%= @user.name %>
+        </div>
+        <div class="card-count">
+          <ul class="my-3 row">
+            <li class="m-1 col-xs-3">
+              <%= link_to followings_user_path(@user) do %>
+              <button type="button" class="btn badge-primary">
+                フォロー
+                <span class="badge badge-light">
+                  <%= @count_followings %>
+                </span>
+              </button>
+              <% end %>
+            </li>
+            <li class="m-1 col-xs-3">
+              <%= link_to followers_user_path(@user) do %>
+              <button type="button" class="btn badge-primary">
+              フォロワー
+                <span class="badge badge-light">
+                <%= @count_followers %>
+                </span>
+              </button>
+              <% end %>
+            </li>
+            <li class="m-1 col-xs-3">
+              <%= link_to  liked_otasuke_messages_user_path(@user) do %>
+              <button type="button" class="btn badge-primary">
+              お気に入り
+                <span class="badge badge-light">
+                <%= @count_liked_otasuke_messages %>
+                </span>
+              </button>
+              <% end %>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-8">
         <div class="d-flex flex-column">
-          <%= @user.profile %>
-          <%= @user.name %>
+          <%= image_tag @user.avatar, class: "float-center img-fluid card-avatar-img border mb-2" %>
         </div>
       </div>
     </div>
-    <ul>
-      <li>
-        <%= link_to "フォロー", followings_user_path(@user) %>
-        <%= @count_followings %>
-      </li>
-      <li>
-        <%= link_to "フォロワー", followers_user_path(@user) %>
-        <%= @count_followers %>
-      </li>
-      <li>
-        <%= link_to "お気に入り", liked_otasuke_messages_user_path(@user) %>
-        <%= @count_liked_otasuke_messages %>
-      </li>
-    </ul>
+  </div>
+  <div class="card-footer card-profile">
+    <div class="col-sm-12">
+       <%= @user.profile %>
+    </div>
   </div>
 </div>

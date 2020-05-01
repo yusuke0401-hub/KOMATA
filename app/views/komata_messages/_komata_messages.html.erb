@@ -1,31 +1,33 @@
-<ul class="media-list">
-<% komata_messages.each do |komata_message| %>
-    <li class="media">
-      <div class="media-left">
-        <% if komata_message.image? %>
-          <%= image_tag komata_message.image.url(:thumb), class: "media-object img-rounded" %>
-        <% end %>
-      </div>
-      <div class="media-body">
-        <div>
-          <%= link_to komata_message.user.name, user_path(komata_message.user) %>
-          <span class="text-muted">posted at <%= komata_message.created_at %></span>
-        </div>
-        <div>
-          <p><%= komata_message.content %></p>
-        </div>
-        <div>
-          <%= link_to "komata詳細", komata_message_path(komata_message), class: 'btn btn-danger btn-xs' %>
-
-          <% if current_user == komata_message.user %>
-          <%= link_to "削除", komata_message, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-xs' %>
-          <% end %>
-        </div>
-      </div>
-    </li>
-<% end %>
-
-  
-<%= paginate komata_messages %>
-
-</ul>
+<div class="komata text-center">
+  <h2 class="my-3 font-weight-normal">KOMATA一覧</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">名前</th>
+          <th scope="col">投稿日時</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+    <% komata_messages.each do |komata_message| %>
+      <tbody>
+        <tr>
+          <td><%= link_to komata_message.user.name, user_path(komata_message.user) %></td>
+          <td><%= komata_message.created_at.to_s(:datetime_jp) %></td>
+          <td>
+            <%= link_to "詳細", komata_message_path(komata_message), class: 'btn btn-primary btn-xs my-3' %>
+            <% if current_user == komata_message.user %>
+            <%= link_to "削除", komata_message, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-danger btn-xs  my-td' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left" colspan="3"><%= komata_message.content %></td>
+        </tr>
+      </tbody>
+    <% end %>
+    
+    <%= paginate komata_messages %>
+    </table>
+  </div>
+</div>

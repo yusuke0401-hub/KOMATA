@@ -1,6 +1,9 @@
-<% if notice %>
-  <p class="alert alert-notice"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-error"><%= alert %></p>
+<% if model.errors.any? %> 
+  <div class="alert alert-warning">
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

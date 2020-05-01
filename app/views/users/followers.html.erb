@@ -1,1 +1,8 @@
-<%= render 'users', users: @followers %>
+<div class="text-center">
+<% unless @followers.blank? %> 
+  <%= render 'users', users: @followers %>
+<% else %>
+  <h2 class="my-3 font-weight-normal">フォロワーが存在しません。</h2>
+<% end %>
+  <%= link_to '戻る', user_path(@user) %>
+</div>

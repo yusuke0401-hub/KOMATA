@@ -1,1 +1,8 @@
-<%= render 'users', users: @followings %>
+<div class="text-center">
+<% unless @followings.blank? %> 
+  <%= render 'users', users: @followings %>
+<% else %>
+  <h2 class="my-3 font-weight-normal">フォローが存在しません。</h2>
+<% end %>
+  <%= link_to '戻る', user_path(@user) %>
+</div>

@@ -1,0 +1,92 @@
+ul{
+  list-style: none;
+}
+.users{
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+.user-ranks{
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  margin: auto;
+  text-align: center;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-user-edit{
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-user-edit .card-avatar-img{
+  width: 100%;
+  height: auto;
+}
+.form-user-edit .actions{
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  margin: auto;
+}
+
+.komata{
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+.komata-show{
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+.otasuke{
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+.explanation {
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+.post{
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .form-user-edit{
+    max-width: 400px;
+  }
+}
+
+.table-responsive th{
+white-space: nowrap;
+}

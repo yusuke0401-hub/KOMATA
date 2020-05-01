@@ -1,1 +1,8 @@
-<%= render 'otasuke_messages/otasuke_messages', otasuke_messages: @liked_otasuke_messages %>
+<div class="text-center">
+<% unless @liked_otasuke_messages.blank? %> 
+  <%= render 'otasuke_messages/otasuke_messages', otasuke_messages: @liked_otasuke_messages %>
+<% else %>
+  <h2 class="my-3 font-weight-normal">お気に入りが存在しません。</h2>
+<% end %>
+  <%= link_to '戻る', user_path(@user) %>
+</div>

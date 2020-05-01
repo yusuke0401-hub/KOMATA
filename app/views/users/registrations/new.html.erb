@@ -1,32 +1,32 @@
-<h2>アカウント登録</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin" } ) do |f| %>
   <%= devise_error_messages %>  
+  <h2 class="my-3 font-weight-normal">アカウント登録</h2>
+  
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name, class: "sr-only" %><br />
+    <%= f.text_field :name, class: "form-control", placeholder: "名前", autofocus: true %>
   </div>
   
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: "sr-only" %><br />
+    <%= f.email_field :email, class: "form-control", placeholder: "メールアドレス", autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, class: "sr-only" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em class="sr-only">(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "パスワード", autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field mb-3">
+    <%= f.label :password_confirmation, class: "sr-only" %><br />
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "確認用パスワード", autocomplete: "new-password" %>
   </div>
-
+  
   <div class="actions">
-    <%= f.submit "アカウント登録" %>
+    <%= f.submit "アカウント登録", class: "btn btn-lg btn-primary btn-block" %>
   </div>
 <% end %>
 

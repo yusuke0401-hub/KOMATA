@@ -1,16 +1,34 @@
-<% otasuke_messages.each do |otasuke_message| %>
-  <div>
-    <% unless otasuke_message.user.blank? %>
-      <%= link_to user_path(otasuke_message.user) do %>
-      <p><%= otasuke_message.user.name %></p>
+<div class="otasuke text-center">
+<div class="table-responsive">
+  <h2 class="my-3 font-weight-normal">OTASUKE一覧</h2>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">名前</th>
+      <th scope="col">投稿日時</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <% otasuke_messages.each do |otasuke_message| %>
+    <tbody>
+      <tr>
+      <% unless otasuke_message.user.blank? %>
+        <%= link_to user_path(otasuke_message.user) do %>
+        <td><%= otasuke_message.user.name %></td>
+        <% end %>
       <% end %>
-    <% end %>   
-    <p><%= otasuke_message.content %></p>
-    <p><%= render 'likes/like_button', otasuke_message: otasuke_message %></p>
-    <hr>
-  </div>
+        <td><%= otasuke_message.created_at.to_s(:datetime_jp) %></td>
+        <td><%= render 'likes/like_button', otasuke_message: otasuke_message %></td>
+      </tr>
+      <tr>
+        <td class="text-left" colspan="3"><%= otasuke_message.content %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
 
-<% end %>
 
 <%= paginate otasuke_messages %>
 
+</div>

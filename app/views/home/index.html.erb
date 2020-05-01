@@ -1,9 +1,14 @@
 <div class="center jumbotron">
   <div class="text-center">
-    <h1>KOMATAへようこそ!</h1>
+    <h1>
+      <% if user_signed_in? %>
+      <%= current_user.name %>さん
+      <br>
+      <% end %>
+      KOMATAへようこそ!
+    </h1>
     <p><%= link_to 'KOMATAとは？', explanation_index_path %></p>
     <% if user_signed_in? %>
-      <%= current_user.name %>
       <p><%= link_to 'KOMATA投稿', new_komata_message_path, class: "btn btn-lg btn-secondary" %></p>
     <% end %>
   </div>
@@ -11,30 +16,33 @@
 
 <% if user_signed_in? %>
 <% unless @otasuke_message_ranking_users.nil? %>
-<ul class="media-list">
-<h1>ランキング</h1>
-<p>(OTASUKEメッセージの投稿数で集計しています。)</p>
-  <% @otasuke_message_ranking_users.each_with_index do |user,index| %>
-  <li class="media">
-    <div class="media-body">
-      <p><%= index+1 %>位</p>
-      <p><%= user.name %></p>
-      <p>KOMATA投稿数 <%= user.komata_messages.count %></p>
-      <p>OTASUKE投稿数 <%= user.otasuke_messages.count %></p>
-      
-      <%= render 'relationships/follow_button', user: user %>
-
-      <p><%= link_to 'View profile', user_path(user) %></p>
-    </div>  
-    
-    <div class="col-sm-4 pb-3">
-      <div class="card">
-        <img class="img-fluid rounded-circle card-avatar-img" src="<%= user.avatar %>">
-        <span class="card-avatar-back"></span>
-      <div>
-    </div>
-  </li>
-  <% end %>
-</ul>
+<div class="user-ranks text-center">
+  <h2 class="my-3 font-weight-normal">ランキング</h2>
+  <p>(OTASUKEメッセージの投稿数で集計しています。)</p>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">順位</th>
+        <th scope="col">名前</th>
+        <th scope="col">KOMATA投稿数</th>
+        <th scope="col">OTASUKE投稿数</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <% @otasuke_message_ranking_users.each_with_index do |user,index| %>
+      <tbody>
+        <tr>
+          <td><%= index+1 %>位</td>
+          <td><%= link_to user.name, user_path(user) %></td>
+          <td><%= user.komata_messages.count %></td>
+          <td><%= user.otasuke_messages.count %></td>
+          <td><%= render 'relationships/follow_button', user: user %></td>
+        </tr>
+      </tbody>  
+    <% end %>
+    </table>
+  </div>
+</div>
 <% end %>
 <% end %>

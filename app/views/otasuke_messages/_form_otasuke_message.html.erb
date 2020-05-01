@@ -1,8 +1,10 @@
-<%= form_for [komata_message, otasuke_message] do |f| %>
-
-  <div class="form-group">
-    <%= f.text_area :content, class: 'form-control', rows: 5 %>
-    <br>
-    <%= f.submit 'コメントする', class: 'btn btn-primary btn-block'%>
-  </div>
-<% end %>
+<div class="post">
+  <%= form_for [komata_message, otasuke_message] do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+    <div class="form-group">
+      <%= f.text_area :content, class: 'form-control', placeholder: "500文字以内", rows: 5 %>
+      <br>
+      <%= f.submit 'コメントする', class: 'btn btn-primary btn-block'%>
+    </div>
+  <% end %>
+</div>
