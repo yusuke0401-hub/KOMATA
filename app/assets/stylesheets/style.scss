@@ -75,6 +75,19 @@ ul{
   margin: auto;
 }
 
+.avatar img{
+  width: 200px;
+  height: 100%;
+}
+
+.avatar-file{
+  width: 100%;  
+}
+
+.hidden{
+  visibility: hidden;
+}
+
 .post{
   width: 100%;
   padding: 15px;

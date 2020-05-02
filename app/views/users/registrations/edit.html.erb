@@ -39,17 +39,19 @@
   
     <div class="col-md-4">
       <div class="field">
-        <div class="circle-avatar">
+        <div class="avatar text-center">
+          <img id="avatar_img_prev" src="#" class='hidden' /> 
           <% if current_user.persisted? && current_user.avatar? %>
-            <img class="card-avatar-img border", src="<%= current_user.avatar %>">
+            <%= image_tag current_user.avatar, class: "card-avatar-img avatar_present_img border" %>
             <div class="field checkbox my-3">
-              <label><%= f.check_box :remove_avatar %>画像を削除</label>
+              <%= f.check_box :remove_avatar %>
+              <%= f.label "画像を削除" %>
             </div>
           <% else %>
-            <%= image_tag 'fallback/default.jpg', :size => '200x200', class: "img-fluid card-avatar-img border" %>
+            <%= image_tag 'fallback/default.jpg', class: "card-avatar-img avatar_present_img border" %>
             <%= f.hidden_field :avatar_cache %>
           <% end %>
-            <%= f.file_field :avatar %>
+            <%= f.file_field :avatar, id: 'post_img', class: "avatar-file my-3" %>
         </div>
       </div>
     </div>
