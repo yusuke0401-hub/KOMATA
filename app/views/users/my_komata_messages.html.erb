@@ -1,0 +1,8 @@
+<div class="text-center">
+<% unless @my_komata_messages.blank? %> 
+  <%= render 'komata_messages/komata_messages', komata_messages: @my_komata_messages %>
+<% else %>
+  <h2 class="my-3 font-weight-normal">フォロワーが存在しません。</h2>
+<% end %>
+  <%= link_to '戻る', user_path(@user) %>
+</div>

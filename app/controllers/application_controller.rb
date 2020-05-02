@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     @count_followings = user.followings.count
     @count_followers = user.followers.count
     @count_liked_otasuke_messages = user.liked_otasuke_messages.count
+    @count_my_komata_messages = user.komata_messages.count
   end
   
   protected

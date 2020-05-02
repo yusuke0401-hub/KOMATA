@@ -40,6 +40,16 @@
               </button>
               <% end %>
             </li>
+            <li class="m-1 col-xs-3">
+              <%= link_to my_komata_messages_user_path(@user) do %>
+              <button type="button" class="btn badge-primary">
+              KOMATA
+                <span class="badge badge-light">
+                <%= @count_my_komata_messages %>
+                </span>
+              </button>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>

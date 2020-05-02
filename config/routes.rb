@@ -10,12 +10,12 @@ Rails.application.routes.draw do
     member do 
       get :followings
       get :followers
-      
       get :liked_otasuke_messages
+      get :my_komata_messages
     end
   end
   
-  resources :explanation, only: [:index]
+  resources :explanations, only: [:index]
   resources :relationships, only: [:create, :destroy]
   resources :komata_messages, only: [:index, :show ,:new, :create, :destroy] do 
     resources :otasuke_messages, only: [:create, :destroy]
