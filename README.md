@@ -7,11 +7,16 @@ KOMATA（不安や悩み、困ったこと）を打ち明けたいけど打ち�
 <p><a href="https://komata-app.herokuapp.com"></p>
 
 <h2>構成</h2>
-<h3>開発言語・フレームワーク<h3>
-	Ruby 2.6.3
-	Rails 5.0.7
-<h3>開発環境</h3>
-	AWS Cloud9 
+<dl>
+	<dt>開発言語・フレームワーク</dt>
+	<dd>Ruby 2.6.3</dd>
+	<dd>Rails 5.0.7</dd>
+</dl>
+<dl>
+	<dt>開発環境</dt>
+	<dd>AWS Cloud9</dd>
+</dl>
+
 <h2>機能</h2>
 
 <h3>ユーザー関連機能</h3>
@@ -36,12 +41,13 @@ KOMATA（不安や悩み、困ったこと）を打ち明けたいけど打ち�
 	<li>ソーシャルログイン機能</li>
 	<li>メール認証機能</li>
 </ul>
-<h3></h3>
+
+<h3>その他</h3>
+<p>ログイン機能はdeviseのライブラリで作成しました。</p>
+<p>デザインはBootstrapのフレームワークで作成しました。</p>
 
 
-ログイン機能 devise	
-ソーシャルログイン機能
-デザインbootstrap4	
+
 
 		
 
