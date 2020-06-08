@@ -5,7 +5,7 @@ KOMATA（不安や悩み、困ったこと）を打ち明けたいけど打ち�
 </p>
 
 <h2>アプリURL</h2>
-<p><a href="https://komata-app.herokuapp.com"></p>
+<p>https://komata-app.herokuapp.com</p>
 
 <h2>構成</h2>
 <dl>
